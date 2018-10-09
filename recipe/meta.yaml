@@ -1,4 +1,4 @@
-{% set version = '2.4-3' %}
+{% set version = '2.5-2' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -10,14 +10,13 @@ package:
 source:
   fn: vegan_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/vegan_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/vegan/vegan_{{ version }}.tar.gz
-  sha256: 2556b1281a62e53f32bb57539bc600c00a599d0699867912220535d1a3ebec97
+    - {{ cran_mirror }}/src/contrib/vegan_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/vegan/vegan_{{ version }}.tar.gz
+  sha256: 2ca4d1650dc23262478fcd9abdaa0132017c7602a19589e28a98987fe9c6fe8e
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-  skip: true  # [win32]
+  number: 0
 
   rpaths:
     - lib/R/lib/
@@ -25,26 +24,31 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('fortran') }}        # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('fortran') }}  # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+
   host:
     - r-base
     - r-mass
     - r-cluster
     - r-lattice
     - r-mgcv
-    - r-permute >=0.9
+    - r-permute >=0.9_0
 
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-mass
     - r-cluster
     - r-lattice
     - r-mgcv
-    - r-permute >=0.9
+    - r-permute >=0.9_0
 
 test:
   commands:
