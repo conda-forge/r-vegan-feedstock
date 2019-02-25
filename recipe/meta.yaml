@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: vegan_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/vegan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/vegan/vegan_{{ version }}.tar.gz
@@ -60,10 +59,8 @@ about:
   summary: Ordination methods, diversity analysis and other functions for community and vegetation
     ecologists.
   license_family: GPL2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - daf
-    - ocefpaf
-    - johanneskoester
-    - bgruening
+    - conda-forge/r
