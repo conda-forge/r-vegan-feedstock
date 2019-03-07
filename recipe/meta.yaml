@@ -1,5 +1,4 @@
-{% set version = '2.5-3' %}
-
+{% set version = '2.5-4' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,15 +7,14 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: vegan_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/vegan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/vegan/vegan_{{ version }}.tar.gz
-  sha256: 6c5c8f0ad7ba8dbb29df0e119da41d330f756e6d0ab2cba24904f808a0fd7d08
+  sha256: 5116a440111fca49b5f95cfe888b180ff29a112e6301d5e2ac5cae0e628493e0
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
+  number: 0
 
   rpaths:
     - lib/R/lib/
@@ -61,10 +59,8 @@ about:
   summary: Ordination methods, diversity analysis and other functions for community and vegetation
     ecologists.
   license_family: GPL2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
-    - daf
-    - ocefpaf
-    - johanneskoester
-    - bgruening
+    - conda-forge/r
