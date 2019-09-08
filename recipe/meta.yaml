@@ -1,4 +1,4 @@
-{% set version = '2.5-5' %}
+{% set version = '2.5-6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/vegan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/vegan/vegan_{{ version }}.tar.gz
-  sha256: 876b5266f29f3034fed881020d16f476e62d145a00cb450a1a213e019e056971
+  sha256: b3c00aceb3db38101960515658e2b9ec1552439c3ed4e26e72989f18eccbc03c
 
 build:
   merge_build_host: True  # [win]
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -57,7 +57,8 @@ about:
   summary: Ordination methods, diversity analysis and other functions for community and vegetation
     ecologists.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
@@ -65,8 +66,7 @@ extra:
 
 # Package: vegan
 # Title: Community Ecology Package
-# Version: 2.5-5
-# Date: 2019-05-08
+# Version: 2.5-6
 # Author: Jari Oksanen, F. Guillaume Blanchet, Michael Friendly, Roeland Kindt, Pierre Legendre, Dan McGlinn, Peter R. Minchin, R. B. O'Hara, Gavin L. Simpson, Peter Solymos, M. Henry H. Stevens, Eduard Szoecs, Helene Wagner
 # Maintainer: Jari Oksanen <jhoksane@gmail.com>
 # Depends: permute (>= 0.9-0), lattice, R (>= 3.4.0)
@@ -78,6 +78,6 @@ extra:
 # BugReports: https://github.com/vegandevs/vegan/issues
 # URL: https://cran.r-project.org, https://github.com/vegandevs/vegan
 # NeedsCompilation: yes
-# Packaged: 2019-05-11 14:15:58 UTC; jarioksa
+# Packaged: 2019-08-31 07:21:37 UTC; jarioksa
 # Repository: CRAN
-# Date/Publication: 2019-05-12 14:50:03 UTC
+# Date/Publication: 2019-09-01 14:30:02 UTC
