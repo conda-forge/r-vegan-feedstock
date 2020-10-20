@@ -55,12 +55,12 @@ test:
 
 about:
   home: https://cran.r-project.org, https://github.com/vegandevs/vegan
-  license: GPL-2
+  license: GPL-2.0-only
   summary: Ordination methods, diversity analysis and other functions for community and vegetation
     ecologists.
   license_family: GPL2
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
