@@ -1,4 +1,4 @@
-{% set version = "2.7-2" %}
+{% set version = "2.7-3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/vegan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/vegan/vegan_{{ version }}.tar.gz
-  sha256: 3d10da841d36c2eb5570da1837cfa45b7627921006ca245d1360c8d9f2645cb4
+  sha256: 1fcc1f74e8f38bfb25e11a3ac68853147872043a8d4f52cd22a907a5d1120772
 
 build:
   number: 0
